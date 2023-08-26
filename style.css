@@ -1,3 +1,11 @@
+:root {
+    --green: #1fb141;
+    --gray: #e0e0e0;
+    --light-gray: #f3f3f3;
+    --white: #ffffff;
+    --black: #000000;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +17,7 @@ body {
     place-items: center;
     min-height: 100vh;
     font-family: "Inter", sans-serif;
-    background: #e0e0e0;
+    background: var(--gray);
     padding-inline: 16px;
 }
 
@@ -19,7 +27,7 @@ input[type="checkbox"] {
 }
 
 .todo {
-    background: #ffffff;
+    background: var(--white);
     border-radius: 16px;
     width: 100%;
     max-width: 396px;
@@ -32,7 +40,7 @@ input[type="checkbox"] {
     font-size: 32px;
     text-align: center;
     padding-bottom: 20px;
-    border-bottom: 1px solid #f3f3f3;
+    border-bottom: 1px solid var(--light-gray);
     margin-top: 20px;
 }
 
@@ -41,13 +49,19 @@ input[type="checkbox"] {
     justify-content: space-between;
 }
 
+#button {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
 .create-button {
     border: none;
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: #1fb411;
-    color: #ffffff;
+    background: var(--green);
+    color: var(--white);
     font-size: 24px;
     line-height: 0;
     transition: 0.3s;
@@ -58,6 +72,36 @@ input[type="checkbox"] {
     transform: scale(1.2);
 }
 
+.dark-button {
+    background-image: url(assets/moon.svg);
+    background-repeat: no-repeat;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: 0;
+    transition: 0.3s;
+    transition-timing-function: cubic-bezier(0.2, 1, 0.2, 1.4);
+}
+
+.dark-button:hover{
+    transform: scale(1.2);
+}
+
+[data-theme="dark"] {
+    --black: #000;
+}
+
+.dark-mode .todo {
+    background: var(--black);
+    color: var(--white);
+}
+
+.dark-mode .todo-title {
+    color: var(--white);
+}
+
 .todo-list {
     list-style: none;
     margin-top: 12px;
@@ -66,11 +110,12 @@ input[type="checkbox"] {
 }
 
 .task {
-    padding: 16px;
-    background: #f3f3f3;
-    border-radius: 12px;
+    padding: 20px;
+    background: var(--light-gray);
+    border-radius: 15px;
     display: flex;
     align-items: center;
+    outline: none;
     gap: 8px;
 }
 
@@ -79,7 +124,7 @@ input[type="checkbox"] {
 }
 
 .task input[type="checkbox"] {
-    accent-color: #1fb411;          /* Mudar a cor do checkbox */
+    accent-color: var(--green);          /* Mudar a cor do checkbox */
 }
 
 .task p {
@@ -90,7 +135,7 @@ input[type="checkbox"] {
     border: none;
     width: 20px;
     height: 20px;
-    background-color: #f3f3f3;
+    background-color: var(--light-gray);
     background-image: url(assets/trash.svg);
     background-repeat: no-repeat;
     background-position: center;
