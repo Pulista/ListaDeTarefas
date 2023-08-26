@@ -37,7 +37,7 @@ export default class TodoList {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            description: "Escreva uma tarefa...",
+            description: "",
             completed: false,
           }),
         });
