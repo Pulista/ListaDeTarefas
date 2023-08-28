@@ -3,7 +3,9 @@
     --gray: #e0e0e0;
     --light-gray: #f3f3f3;
     --white: #ffffff;
-    --black: #000000;
+    --black: #333333;
+    --task-bg: #f3f3f3;
+    --delete-bg: #f3f3f3;
 }
 
 * {
@@ -16,9 +18,13 @@ body {
     display: grid;
     place-items: center;
     min-height: 100vh;
-    font-family: "Inter", sans-serif;
+    font-family: "Poppins", sans-serif;
     background: var(--gray);
     padding-inline: 16px;
+}
+
+p {
+    outline: none;
 }
 
 button,
@@ -37,7 +43,7 @@ input[type="checkbox"] {
 }
 
 .todo-title {
-    font-size: 32px;
+    font-size: 35px;
     text-align: center;
     padding-bottom: 20px;
     border-bottom: 1px solid var(--light-gray);
@@ -83,6 +89,7 @@ input[type="checkbox"] {
     line-height: 0;
     transition: 0.3s;
     transition-timing-function: cubic-bezier(0.2, 1, 0.2, 1.4);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
 .dark-button:hover{
@@ -90,7 +97,8 @@ input[type="checkbox"] {
 }
 
 [data-theme="dark"] {
-    --black: #000;
+    --task-bg: #444444;
+    --delete-bg: #444444;
 }
 
 .dark-mode .todo {
@@ -102,16 +110,25 @@ input[type="checkbox"] {
     color: var(--white);
 }
 
+.dark-mode .todo-actions {
+    color: var(--white);
+}
+
+.dark-mode .task {
+    color: var(--black);
+}
+
 .todo-list {
     list-style: none;
     margin-top: 12px;
     max-height: 444px;
     overflow: auto;
+    color: var(--black);
 }
 
 .task {
     padding: 20px;
-    background: var(--light-gray);
+    background: var(--task-bg);
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -127,6 +144,11 @@ input[type="checkbox"] {
     accent-color: var(--green);          /* Mudar a cor do checkbox */
 }
 
+.task input[type="checkbox"]:checked + p {
+    text-decoration: line-through;
+    filter: opacity(70%);
+}
+
 .task p {
     flex: 1;
 }
@@ -135,7 +157,7 @@ input[type="checkbox"] {
     border: none;
     width: 20px;
     height: 20px;
-    background-color: var(--light-gray);
+    background-color: var(--delete-bg);
     background-image: url(assets/trash.svg);
     background-repeat: no-repeat;
     background-position: center;
